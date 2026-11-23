@@ -1,12 +1,9 @@
-[🇬🇧 English](README.md) | [🇫🇷 Français](README.fr.md)
 
-# Enterprise Security Lab <img src="https://img.shields.io/badge/Status-Decommissioned-red" />
+# On-Premises Security Lab
 
-Built a self-hosted Active Directory and security monitoring lab to better understand Windows infrastructure, SIEM pipelines, endpoint telemetry, and attack detection in a realistic enterprise scale environment.
+A self-hosted security monitoring lab built to explore Active Directory, endpoint telemetry, SIEM integration, and network threat detection.
 
-The lab was eventually decommissioned after repeated stability and resource issues, but the process gave me hands-on experience troubleshooting authentication failures, scaling limitations, logging infrastructure, and virtualisation constraints.
-
----
+**Status:** Decommissioned
 
 ## Environment
 
@@ -14,42 +11,30 @@ The lab was eventually decommissioned after repeated stability and resource issu
 |---|---|
 | Windows Server | Active Directory, DNS, DHCP |
 | Windows 11 | Domain-joined endpoint |
-| Ubuntu 22.04 Desktop | Linux endpoint |
-| Wazuh | SIEM and centralised logging |
+| Ubuntu 22.04 | Linux endpoint |
+| Wazuh | SIEM and log management |
 | Security Onion | Network monitoring and IDS |
-| Kali Linux | Attack simulation |
+| Kali Linux | Security testing |
 
----
+## Implementation
 
-## What I Built
+- Configured an isolated virtual network using VirtualBox.
+- Deployed Active Directory, DNS, and DHCP.
+- Joined Windows endpoints to the domain.
+- Integrated Sysmon for endpoint telemetry.
+- Forwarded endpoint logs to Wazuh.
+- Used Security Onion for network monitoring.
+- Simulated security events and investigated alerts.
 
-- Configured an isolated virtual network in VirtualBox
-- Deployed Active Directory with DNS and DHCP
-- Joined Windows endpoints to the domain
-- Forwarded endpoint logs into Wazuh
-- Integrated Sysmon telemetry for endpoint visibility
-- Used Security Onion for network monitoring
-- Simulated attacker activity from a Kali Linux host
-- Investigated alerts from both endpoint and network sources
+## Lab Environment
 
----
+The lab ran across multiple virtual machines, combining Windows and Linux endpoints with centralised security monitoring.
 
-
-### Switched my host OS from Windows to Ubuntu Linux as it was lighter, smoother and I enjoyed being in the terminal
-
-![Ubuntu Install](Ubuntu.PNG)
-
-### Hardware Upgrade on my primary Lenovo laptop before completely upgrading to a MacBook Pro for more processor power.
-
-![Hardware Upgrade](hardware-update.jpg)
-
-![Hardware Upgrade](hardware-update2.jpeg)
-
----
+![Ubuntu Linux Environment](Ubuntu.PNG)
 
 ## Attack Simulation
 
-The environment was used to simulate common internal attack activity including:
+Used Kali Linux to simulate internal security activity, including:
 
 - Network enumeration
 - Credential attacks
@@ -57,72 +42,24 @@ The environment was used to simulate common internal attack activity including:
 - Lateral movement
 - Persistence techniques
 
-The goal was to better understand what attacker behaviour actually looks like from a defensive monitoring perspective.
+Investigated attacker activity through endpoint telemetry and network monitoring alerts.
 
----
+## Troubleshooting
 
-## What Went Wrong
+The lab encountered several stability and resource issues:
 
-This project failed multiple times before stabilising.
+- Elasticsearch consuming excessive memory.
+- DNS misconfiguration affecting Active Directory authentication.
+- VM clock drift causing Kerberos authentication failures.
+- High CPU and RAM usage across virtual machines.
+- Virtualisation compatibility issues during migration to Apple Silicon.
 
-Main problems included:
+The environment was eventually decommissioned because the combined resource requirements made it impractical to maintain reliably on local hardware.
 
-- Elasticsearch consuming excessive memory
-- DNS misconfigurations breaking Active Directory authentication
-- VM clock drift causing Kerberos failures
-- Security Onion and Wazuh overwhelming available resources
-- CPU and RAM saturation under multi-VM workloads
-- Apple Silicon migration reducing virtualisation compatibility
+## Key Takeaways
 
-The biggest lesson was understanding how quickly observability and security tooling become resource-intensive in real environments. Instead of endlessly rebuilding unstable infrastructure, I decided to decommission the lab and rethink future projects using a smaller and more modular design.
-
----
-
-## Key Lessons Learned
-
-- Active Directory depends heavily on stable DNS and time synchronisation
-- SIEM platforms require significant compute resources
-- Security tooling scales faster than expected
-- Troubleshooting distributed systems is a core engineering skill
-- Smaller phased deployments are easier to maintain than large all-in-one environments
-- Stability and maintainability matter as much as functionality
-
----
-
-## Why I Archived The Project
-
-The environment became too resource-heavy to maintain reliably on local hardware. Rather than continue patching instability issues, I decided to archive the lab and focus future projects around:
-
-- cloud infrastructure
-- Infrastructure-as-Code
-- modular deployments
-- scalable logging pipelines
-- cloud-native monitoring
-
----
-
-## Next Steps
-
-The next version of this project will focus on cloud security engineering using Azure with an emphasis on:
-
-- identity and access management
-- centralised logging
-- detection engineering
-- Infrastructure-as-Code
-- cloud-native monitoring pipelines
-
----
-
-## Conclusion
-
-This project gave me practical experience working with:
-
-- Active Directory
-- Windows and Linux systems
-- SIEM monitoring
-- endpoint telemetry
-- network troubleshooting
-- virtualisation constraints
-- infrastructure reliability issues
-
-Although the lab was eventually decommissioned, building and troubleshooting it taught me significantly more than a perfectly stable environment would have.
+- Active Directory relies on reliable DNS and time synchronisation.
+- SIEM platforms require careful resource planning.
+- Endpoint and network telemetry provide complementary visibility.
+- Distributed infrastructure requires systematic troubleshooting.
+- Smaller, modular deployments are easier to maintain and scale.
