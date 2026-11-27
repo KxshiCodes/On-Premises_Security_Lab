@@ -1,7 +1,6 @@
-
 # On-Premises Security Lab
 
-A self-hosted security monitoring lab built to explore Active Directory, endpoint telemetry, SIEM integration, and network threat detection.
+A self-hosted security monitoring environment built to explore Active Directory, endpoint telemetry, SIEM integration, and network threat detection.
 
 **Status:** Decommissioned
 
@@ -18,23 +17,23 @@ A self-hosted security monitoring lab built to explore Active Directory, endpoin
 
 ## Implementation
 
-- Configured an isolated virtual network using VirtualBox.
+- Built an isolated virtual network using VirtualBox.
 - Deployed Active Directory, DNS, and DHCP.
 - Joined Windows endpoints to the domain.
 - Integrated Sysmon for endpoint telemetry.
-- Forwarded endpoint logs to Wazuh.
-- Used Security Onion for network monitoring.
-- Simulated security events and investigated alerts.
+- Forwarded endpoint events to Wazuh.
+- Configured Security Onion for network monitoring.
+- Simulated security activity and investigated generated alerts.
 
 ## Lab Environment
 
-The lab ran across multiple virtual machines, combining Windows and Linux endpoints with centralised security monitoring.
+The environment consisted of multiple Windows and Linux virtual machines integrated with centralised security monitoring.
 
 ![Ubuntu Linux Environment](Ubuntu.PNG)
 
-## Attack Simulation
+## Security Testing & Investigation
 
-Used Kali Linux to simulate internal security activity, including:
+Used Kali Linux to conduct controlled internal security testing, covering:
 
 - Network enumeration
 - Credential attacks
@@ -42,24 +41,22 @@ Used Kali Linux to simulate internal security activity, including:
 - Lateral movement
 - Persistence techniques
 
-Investigated attacker activity through endpoint telemetry and network monitoring alerts.
+Investigated generated activity using endpoint telemetry and network monitoring alerts.
 
 ## Troubleshooting
 
-The lab encountered several stability and resource issues:
+Maintaining the environment presented several infrastructure challenges:
 
-- Elasticsearch consuming excessive memory.
-- DNS misconfiguration affecting Active Directory authentication.
+- Elasticsearch memory consumption and resource constraints.
+- DNS configuration issues affecting Active Directory authentication.
 - VM clock drift causing Kerberos authentication failures.
-- High CPU and RAM usage across virtual machines.
+- High CPU and RAM utilisation across virtual machines.
 - Virtualisation compatibility issues during migration to Apple Silicon.
 
-The environment was eventually decommissioned because the combined resource requirements made it impractical to maintain reliably on local hardware.
+The lab was eventually decommissioned due to hardware resource limitations and the difficulty of maintaining the full environment reliably.
 
-## Key Takeaways
+## Outcome
 
-- Active Directory relies on reliable DNS and time synchronisation.
-- SIEM platforms require careful resource planning.
-- Endpoint and network telemetry provide complementary visibility.
-- Distributed infrastructure requires systematic troubleshooting.
-- Smaller, modular deployments are easier to maintain and scale.
+Built and integrated a multi-system security monitoring environment combining Active Directory, Windows and Linux endpoints, endpoint telemetry, SIEM monitoring, and network detection.
+
+The project provided practical experience with infrastructure deployment, log integration, security investigation, and troubleshooting across a self-hosted environment.
